@@ -1,0 +1,129 @@
+.container {
+  display: grid;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.search-container {
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.search-container input {
+  width: 100%;
+  max-width: 600px;
+  padding: 16px 50px;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  background-color: black;
+  box-shadow: 0 4px 8px rgba(255, 70, 70, 0.8);
+}
+
+.search-container i {
+  margin-right: 20px;
+}
+
+.show-list-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+  justify-items: center;
+  text-align: center;
+  padding-bottom: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+
+  @media (max-width: 1260px) {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+}
+
+.show-item {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  }
+}
+
+@media (max-width: 1024px) {
+  .search-container input {
+    max-width: 500px;
+  }
+}
+
+@media (max-width: 768px) {
+  .search-container input {
+    max-width: 400px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .search-container input {
+    max-width: 300px;
+    font-size: 0.9rem;
+  }
+}
+
+.paginator-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 10px;
+}
+
+@media (min-width: 1260px) {
+  .paginator-container .p-paginator {
+    max-width: 800px;
+  }
+}
+
+@media (max-width: 1260px) and (min-width: 1024px) {
+  .paginator-container .p-paginator {
+    max-width: 700px;
+  }
+}
+
+@media (max-width: 1024px) and (min-width: 768px) {
+  .paginator-container .p-paginator {
+    max-width: 600px;
+  }
+}
+
+@media (max-width: 768px) and (min-width: 480px) {
+  .paginator-container .p-paginator {
+    max-width: 500px;
+  }
+
+  @media (max-width: 480px) {
+    .paginator-container .p-paginator {
+      max-width: 400px;
+    }
+  }
+}

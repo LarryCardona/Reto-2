@@ -1,0 +1,113 @@
+@import '../../../styles/colors';
+
+.banner {
+  background-color: #ffffff;
+  padding: 1rem 0;
+
+  h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    background-color: black;
+    padding: 0.5rem 1rem;
+    text-align: center;
+    border-radius: 4px;
+    margin: 0;
+    margin-bottom: 3rem;
+    width: 30%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 4px 8px rgba(255, 70, 70, 0.8);
+
+    @media (max-width: 768px) {
+      font-size: 1.5rem;
+      width: 80%;
+    }
+  }
+
+  .slider-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    background-color: #000000;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(255, 70, 70, 0.8);
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+
+    @media (max-width: 768px) {
+      padding: 1rem;
+    }
+  }
+
+  .slider-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: $primary-color;
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 2;
+
+    &.left {
+      left: 10px;
+    }
+
+    &.right {
+      right: 10px;
+    }
+
+    &:hover {
+      background-color: darken($primary-color, 10%);
+    }
+
+    i {
+      font-size: 20px;
+    }
+
+    @media (max-width: 768px) {
+      width: 30px;
+      height: 30px;
+      i {
+        font-size: 16px;
+      }
+    }
+  }
+
+  .slider {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    gap: 1.5rem;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    .slider-item {
+      flex: 0 0 auto;
+      width: 150px;
+      @media (min-width: 768px) {
+        width: 200px;
+      }
+      @media (min-width: 1200px) {
+        width: 250px;
+      }
+
+      app-show-item {
+        max-width: 100%;
+        height: auto;
+      }
+    }
+  }
+}

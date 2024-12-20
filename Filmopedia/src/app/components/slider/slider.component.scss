@@ -1,0 +1,496 @@
+.slider {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* Altura completa de la pantalla */
+  overflow: hidden;
+
+  .slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    
+    &-bg {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* La imagen cubre todo el contenedor */
+        object-position: center center; /* Enfoque en el centro de la imagen para evitar recortes innecesarios */
+      }
+
+      &::after {
+        background: rgb(0, 0, 0);
+        background: linear-gradient(90deg, rgba(0, 0, 0, 1) 0%, rgba(255, 255, 255, 0) 100%);
+        content: '';
+        display: block;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+      }
+    }
+
+    &-pane {
+      color: white;
+      position: absolute;
+      top: 50%;
+      left: 5%;
+      transform: translateY(-50%);
+      z-index: 1;
+      text-align: left; /* Mantiene el texto alineado a la izquierda */
+
+      .title {
+        font-size: 2.5rem;
+        font-weight: bold;
+      }
+
+      .meta {
+        font-size: 1.5rem;
+        .rating,
+        .votes,
+        .release-date {
+          .pi {
+            margin-right: 10px;
+          }
+        }
+      }
+
+      .description {
+        font-size: 1.2rem;
+        width: 60%;
+        padding: 1.5rem;
+        background: rgba(0, 0, 0, 0.5);
+        line-height: 1.8rem;
+        white-space: pre-line;
+      }
+    }
+  }
+
+  /* Solo cuando estamos en el Home */
+  .slide-pane.home {
+    /* Modifica el título y los elementos para que estén más abajo */
+    top: 60%; /* Título más abajo */
+    left: 5%;
+    transform: translateY(-50%);
+    text-align: left; /* Mantiene el texto alineado a la izquierda */
+
+    .title {
+      font-size: 3rem; /* Aumenta el tamaño del título */
+      margin-top: 10vh; /* Empuja un poco más el título hacia abajo */
+    }
+
+    .meta {
+      font-size: 1.4rem;
+      margin-top: 20px;
+    }
+
+    .description {
+      font-size: 1rem; /* Hace la descripción más pequeña */
+      width: 70%; /* Ajusta el tamaño de la descripción */
+      padding: 1rem;
+      margin-top: 15px;
+      background: rgba(0, 0, 0, 0.4);
+      line-height: 1.6rem;
+      white-space: pre-line;
+      /* Limita la cantidad de líneas mostradas para hacerla más compacta */
+      max-height: 4.5rem;
+      overflow: hidden;
+    }
+
+    .details-button {
+      font-size: 1.2rem; /* Ajusta el tamaño del botón */
+      padding: 0.7rem 1.5rem;
+      margin-top: 15px;
+    }
+  }
+
+  /* Cuando NO estamos en el Home */
+  .slide-pane.not-home {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centra el contenedor */
+    text-align: center; /* Centra el texto dentro del contenedor */
+
+    .title {
+      font-size: 3.5rem; /* Título más grande */
+    }
+
+    .meta {
+      font-size: 2rem; /* Aumentamos el tamaño de la meta */
+      margin-top: 20px;
+    }
+
+    .description {
+      font-size: 1.5rem; /* Aumentamos el tamaño de la descripción */
+      width: 70%; /* Hacemos la descripción más ancha */
+      margin-top: 20px;
+    }
+
+    .details-button {
+      font-size: 1.2rem; /* Botón más grande */
+      padding: 0.75rem 1.5rem;
+      margin-top: 30px;
+    }
+  }
+
+  /* Ajustes para pantallas pequeñas */
+  @media (max-width: 768px) {
+    height: 60vh;
+
+    .slide {
+      height: 100%;
+    }
+
+    .slide-pane {
+      left: 2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      text-align: left; /* Mantiene el texto alineado a la izquierda */
+
+      .title {
+        font-size: 1.8rem;
+      }
+
+      .meta {
+        font-size: 1.2rem;
+      }
+
+      .description {
+        font-size: 1.1rem;
+        width: 75%;
+      }
+    }
+
+    /* Cuando estamos en el Home */
+    .slide-pane.home {
+      left: 5%;
+      top: 60%;
+      transform: translateY(-50%);
+      text-align: left;
+
+      .title {
+        font-size: 2.5rem; /* Título más grande */
+        margin-top: 15vh;
+      }
+
+      .meta {
+        font-size: 1.3rem;
+        margin-top: 15px;
+      }
+
+      .description {
+        font-size: 1.2rem; /* Menos información */
+        width: 80%;
+        max-height: 5rem;
+        overflow: hidden;
+        margin-top: 15px;
+      }
+
+      .details-button {
+        font-size: 1.3rem;
+        margin-top: 25px;
+      }
+    }
+
+    /* Cuando NO estamos en el Home */
+    .slide-pane.not-home {
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center; /* Centra el texto dentro del contenedor */
+      
+      .title {
+        font-size: 2.8rem; /* Título más grande */
+      }
+
+      .meta {
+        font-size: 1.7rem;
+        margin-top: 20px;
+      }
+
+      .description {
+        font-size: 1.4rem;
+        width: 80%;
+        margin-top: 20px;
+      }
+
+      .details-button {
+        font-size: 1.3rem;
+        margin-top: 30px;
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    height: 70vh;
+
+    .slide {
+      height: 100%;
+    }
+
+    .slide-pane {
+      left: 1rem;
+      top: 45%;
+      transform: translateY(-45%);
+      text-align: left; /* Mantiene el texto alineado a la izquierda */
+
+      .title {
+        font-size: 1.6rem;
+      }
+
+      .description {
+        font-size: 1rem;
+        width: 80%;
+      }
+    }
+
+    /* Cuando estamos en el Home */
+    .slide-pane.home {
+      left: 5%;
+      top: 60%;
+      transform: translateY(-50%);
+      text-align: left;
+
+      .title {
+        font-size: 2.4rem; /* Título más grande */
+        margin-top: 20vh;
+      }
+
+      .meta {
+        font-size: 1.6rem;
+        margin-top: 15px;
+      }
+
+      .description {
+        font-size: 1.1rem;
+        width: 85%;
+        max-height: 5rem;
+        overflow: hidden;
+        margin-top: 15px;
+      }
+
+      .details-button {
+        font-size: 1.3rem;
+        margin-top: 25px;
+      }
+    }
+
+    /* Cuando NO estamos en el Home */
+    .slide-pane.not-home {
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center; /* Centra el texto dentro del contenedor */
+
+      .title {
+        font-size: 2.4rem; /* Título más grande */
+      }
+
+      .meta {
+        font-size: 1.6rem;
+        margin-top: 20px;
+      }
+
+      .description {
+        font-size: 1.3rem;
+        width: 85%;
+        margin-top: 20px;
+      }
+
+      .details-button {
+        font-size: 1.3rem;
+        margin-top: 30px;
+      }
+    }
+  }
+
+  /* Estilos para pantallas grandes */
+  @media (min-width: 1200px) {
+    height: 80vh;
+
+    .slide {
+      height: 100%;
+    }
+
+    .slide-pane {
+      left: 5%;
+      top: 50%;
+      transform: translateY(-50%);
+      text-align: left; /* Mantiene el texto alineado a la izquierda */
+
+      .title {
+        font-size: 3rem;
+      }
+
+      .meta {
+        font-size: 1.8rem;
+      }
+
+      .description {
+        font-size: 1.3rem;
+        width: 55%;
+      }
+    }
+
+    /* Cuando estamos en el Home */
+    .slide-pane.home {
+      left: 5%;
+      top: 60%;
+      transform: translateY(-50%);
+      text-align: left;
+
+      .title {
+        font-size: 3rem; /* Título más grande */
+        margin-top: 12vh;
+      }
+
+      .meta {
+        font-size: 1.6rem;
+        margin-top: 15px;
+      }
+
+      .description {
+        font-size: 1.2rem;
+        width: 65%;
+        margin-top: 15px;
+        max-height: 6rem;
+        overflow: hidden;
+      }
+
+      .details-button {
+        font-size: 1.5rem;
+        margin-top: 25px;
+      }
+    }
+
+    /* Cuando NO estamos en el Home */
+    .slide-pane.not-home {
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center; /* Centra el texto dentro del contenedor */
+
+      .title {
+        font-size: 4rem;
+      }
+
+      .description {
+        font-size: 1.6rem;
+        width: 60%;
+        margin-top: 20px;
+      }
+
+      .details-button {
+        font-size: 1.7rem;
+        padding: 1rem 2rem;
+        margin-top: 40px;
+      }
+    }
+  }
+
+  @media (min-width: 1500px) {
+    height: 90vh;
+
+    .slide {
+      height: 100%;
+    }
+
+    .slide-pane {
+      left: 5%;
+      top: 50%;
+      transform: translateY(-50%);
+      text-align: left; /* Mantiene el texto alineado a la izquierda */
+
+      .title {
+        font-size: 3.5rem;
+      }
+
+      .description {
+        font-size: 1.5rem;
+        width: 50%;
+      }
+    }
+
+    /* Cuando estamos en el Home */
+    .slide-pane.home {
+      left: 5%;
+      top: 60%;
+      transform: translateY(-50%);
+      text-align: left;
+
+      .title {
+        font-size: 4rem; /* Título más grande */
+        margin-top: 8vh;
+      }
+
+      .description {
+        font-size: 1.4rem;
+        width: 60%;
+        margin-top: 20px;
+        max-height: 7rem;
+        overflow: hidden;
+      }
+
+      .details-button {
+        font-size: 1.7rem;
+        margin-top: 35px;
+      }
+    }
+
+    /* Cuando NO estamos en el Home */
+    .slide-pane.not-home {
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+
+      .title {
+        font-size: 4.5rem;
+      }
+
+      .description {
+        font-size: 1.8rem;
+        width: 55%;
+        margin-top: 20px;
+      }
+
+      .details-button {
+        font-size: 1.8rem;
+        padding: 1.2rem 2.5rem;
+        margin-top: 50px;
+      }
+    }
+  }
+}
+
+.details-button {
+  background-color: rgb(255, 70, 70);
+  color: white;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+  margin-left: 5px;
+}
+
+.details-button:hover {
+  background-color: rgb(220, 30, 30);
+}
+
+.details-button:focus {
+  outline: none;
+}
+
+.rating .pi.pi-star-fill {
+  color: #FFD700;
+}
+
+.rating .pi.pi-star-fill:hover {
+  color: #FFB100;
+}

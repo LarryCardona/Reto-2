@@ -1,0 +1,173 @@
+<ng-container *ngIf="show$ | async as show">
+  <app-slider [slides]="[show]" [isHeader]="true"></app-slider>
+
+  <p-tabView>
+    <p-tabPanel header="Overview">
+      <div class="overview-grid">
+        <div class="poster-container">
+          <img
+            class="poster"
+            [src]="imagesSizes.medium + show.poster_path"
+            [alt]="show.title"
+          />
+        </div>
+
+        <div class="overview-info">
+          <p class="overview">{{ show.overview }}</p>
+
+          <div class="stat">
+            <div class="label">Release Date:</div>
+            <div class="value">
+              {{ show.release_date | date: 'dd.MM.yyyy' }}
+            </div>
+          </div>
+
+          <div class="stat">
+            <div class="label">Language:</div>
+            <div class="value">{{ show.original_language }}</div>
+          </div>
+
+          <ng-container *ngIf="show.revenue">
+            <div class="stat">
+              <div class="label">Revenue:</div>
+              <div class="value">{{ show.revenue | currency }}</div>
+            </div>
+          </ng-container>
+
+          <ng-container *ngIf="show.runtime">
+            <div class="stat">
+              <div class="label">Duration:</div>
+              <div class="value">{{ show.runtime }} min</div>
+            </div>
+          </ng-container>
+
+          <div class="stat">
+            <div class="label">Genres:</div>
+            <div class="value">
+              <ng-container *ngFor="let genre of show.genres; let last = last">
+                <span>{{ genre.name }}</span>
+                <span *ngIf="!last">, </span>
+              </ng-container>
+            </div>
+          </div>
+          <button 
+            class="trailer-button"
+            *ngIf="trailerVideoKey" 
+            (click)="toggleTrailer()" 
+            (keydown)="onKeydown($event)">
+            {{ showTrailer ? 'Cerrar Tráiler' : 'Ver Trailer' }}
+          </button>
+
+          <div *ngIf="showTrailer && trailerVideoKey" class="trailer">
+            <app-video-embed [key]="trailerVideoKey"></app-video-embed>
+          </div>
+        </div>
+      </div>
+    </p-tabPanel>
+
+    <p-tabPanel header="Cast">
+      <ng-container *ngIf="showCasts$ | async as actors">
+        <p-carousel
+          *ngIf="actors.length"
+          [value]="actors"
+          [numVisible]="8"
+          [numScroll]="8"
+          [responsiveOptions]="responsiveOptions"
+          [circular]="false"
+        >
+          <ng-template let-actor pTemplate="actor">
+            <div class="actor">
+              <img
+                *ngIf="actor.profile_path; else defaultActorPhoto"
+                [src]="imagesSizes.medium + actor.profile_path"
+                [alt]="actor.name"
+              />
+              <div class="memberName">{{ actor.name }}</div>
+              <div>({{ actor.character }})</div>
+            </div>
+          </ng-template>
+        </p-carousel>
+      </ng-container>
+    </p-tabPanel>
+
+    <p-tabPanel header="Crew">
+      <ng-container *ngIf="showCrew$ | async as crew">
+        <p-carousel
+          *ngIf="crew.length"
+          [value]="crew"
+          [numVisible]="8"
+          [numScroll]="8"
+          [responsiveOptions]="responsiveOptions"
+          [circular]="false"
+        >
+          <ng-template let-member pTemplate="actor">
+            <div class="actor">
+              <img
+                *ngIf="member.profile_path; else defaultActorPhoto"
+                [src]="imagesSizes.medium + member.profile_path"
+                [alt]="member.name"
+              />
+              <div class="memberName">{{ member.name }}</div>
+              <div>{{ member.job }}</div>
+            </div>
+          </ng-template>
+        </p-carousel>
+      </ng-container>
+    </p-tabPanel>
+
+    <p-tabPanel header="Videos">
+      <ng-container *ngIf="showVideos$ | async as showVideos">
+        <div class="grid">
+          <div
+            class="col-12 md:col-6 lg:col-4"
+            *ngFor="let showVideo of getVisibleVideos(showVideos); let i = index"
+          >
+            <app-video-embed [key]="showVideo.key"></app-video-embed>
+          </div>
+        </div>
+        <button *ngIf="showVideos.length > 3" (click)="toggleVideos()" class="show-more-button">
+          {{ showAllVideos ? 'Mostrar menos' : 'Mostrar más' }}
+        </button>
+      </ng-container>
+    </p-tabPanel>
+
+    <p-tabPanel header="Photos">
+      <ng-container *ngIf="showImages$ | async as showImages">
+        <div class="grid">
+          <div
+            class="col-12 md:col-6 lg:col-4 xl:col-3"
+            *ngFor="let showImage of getVisibleImages(showImages); let i = index"
+          >
+            <p-image
+              [src]="imagesSizes.large + showImage.file_path"
+              [alt]="show.title"
+              width="100%"
+              [preview]="true"
+            ></p-image>
+          </div>
+        </div>
+        <button *ngIf="showImages.length > 3" (click)="toggleImages()" class="show-more-button">
+          {{ showAllImages ? 'Mostrar menos' : 'Mostrar más' }}
+        </button>
+      </ng-container>
+    </p-tabPanel>
+  </p-tabView>
+</ng-container>
+
+<ng-container *ngIf="similarMovies$ | async as similarMovies">
+  <ng-container *ngIf="similarMovies.length !== 0">
+    <app-banner
+      [shows]="similarMovies"
+      title="You May Also Like"
+      [showType]="showType"
+    ></app-banner>
+  </ng-container>
+</ng-container>
+
+<ng-template #defaultActorPhoto>
+  <img
+    src="assets/images/actor.jpg"
+    alt="No Picture"
+    class="actor-placeholder-image"
+  />
+</ng-template>

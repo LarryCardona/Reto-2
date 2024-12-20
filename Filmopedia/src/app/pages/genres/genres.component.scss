@@ -1,0 +1,141 @@
+@import '../../../styles/colors.scss';
+.container {
+  display: grid;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.genres-container {
+  margin-top: -10px; /* Esto es correcto, puedes mantenerlo o ajustarlo si es necesario */
+  margin-bottom: 20px; /* Añadido para separar más los géneros de las películas */
+}
+
+.genres {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  padding: 10px 20px;
+
+  @media (max-width: 1024px) {
+    gap: 10px;
+  }
+
+  @media (max-width: 768px) {
+    gap: 8px;
+  }
+
+  @media (max-width: 480px) {
+    gap: 6px;
+  }
+}
+
+.genre-item {
+  background-color: $primary-color;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 6px 12px;
+  text-align: center;
+  display: inline-block;
+  text-decoration: none;
+  color: white;
+  transition: background-color 0.3s, transform 0.3s;
+  line-height: 1.5;
+  margin-bottom: 8px;
+
+  &:hover {
+    background-color: darken($primary-color, 20);
+    transform: scale(1.05);
+  }
+
+  &:active {
+    background-color: lighten($primary-color, 10);
+  }
+
+  &.selected {
+    background-color: darken($primary-color, 15);
+    font-weight: bold;
+  }
+}
+
+.show-list-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+  justify-items: center;
+  text-align: center;
+  padding-bottom: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-top: 20px;
+
+  @media (max-width: 1260px) {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+}
+
+.show-item {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  }
+}
+
+.paginator-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 10px;
+}
+
+@media (min-width: 1260px) {
+  .paginator-container .p-paginator {
+    max-width: 800px;
+  }
+}
+
+@media (max-width: 1260px) and (min-width: 1024px) {
+  .paginator-container .p-paginator {
+    max-width: 700px;
+  }
+}
+
+@media (max-width: 1024px) and (min-width: 768px) {
+  .paginator-container .p-paginator {
+    max-width: 600px;
+  }
+}
+
+@media (max-width: 768px) and (min-width: 480px) {
+  .paginator-container .p-paginator {
+    max-width: 500px;
+  }
+
+  @media (max-width: 480px) {
+    .paginator-container .p-paginator {
+      max-width: 400px;
+    }
+  }
+}

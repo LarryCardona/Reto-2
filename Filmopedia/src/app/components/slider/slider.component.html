@@ -1,0 +1,40 @@
+<div class="slider" *ngIf="slides">
+  <ng-container *ngFor="let movie of slides; let movieIndex = index">
+    <div class="slide" *ngIf="movieIndex === slideIndex" @slideFade>
+      <div class="slide-bg">
+        <img
+          [src]="imagesBaseUrl + 'w1280' + movie.backdrop_path"
+          [alt]="movie.title"
+        />
+      </div>
+      <div class="slide-pane" [ngClass]="{'not-home': !isHomePage}">
+        <h2 class="title">{{ movie.title }}</h2>
+        <div class="meta mb-4">
+          <div class="rating mb-1">
+            <i class="pi pi-star-fill"></i>
+            <span>{{ movie.vote_average.toFixed(2) }}</span>
+            <span>/10</span>
+          </div>
+          <div class="votes mb-1">
+            <i class="pi pi-users"></i>
+            <span>{{ movie.vote_count }}</span>
+          </div>
+          <div class="release-date">
+            <i class="pi pi-calendar"></i>
+            {{ movie.release_date | date: 'yyyy' }}
+          </div>
+        </div>
+
+        <!-- Mostrar la descripción solo si estamos en la página de inicio -->
+        <div class="description" *ngIf="isHomePage">
+          <span>{{ movie.overview | slice:0:100 }}...</span>
+        </div>
+
+        <!-- Botón de detalles solo si estamos en la página de inicio -->
+        <button *ngIf="isHomePage" class="details-button" [routerLink]="['/detail', 'movie', movie.id]">
+          Ver detalles
+        </button>
+      </div>
+    </div>
+  </ng-container>
+</div>

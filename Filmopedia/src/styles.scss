@@ -1,0 +1,37 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap');
+@import 'modern-normalize/modern-normalize.css';
+@import 'primeflex/primeflex.css';
+@import 'primeicons/primeicons.css';
+@import 'primeng/resources/themes/md-dark-indigo/theme.css';
+@import 'primeng/resources/primeng.css';
+body {
+  color: rgb(0, 0, 0);
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+h1 {
+  font-weight: 400;
+  color: white;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+.container {
+  margin: 0.5rem;
+  padding: 0.5rem;
+  color: white;
+}
+
+// PrimeNG global styles override
+.p-divider-content {
+  border-radius: 0.5rem;
+  h1 {
+    margin: 0.5rem 1rem;
+  }
+}

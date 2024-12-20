@@ -1,0 +1,340 @@
+@import '../../../styles/_colors.scss';
+
+::ng-deep {
+  .p-tabview,
+  .p-tabview-nav {
+    justify-content: center;
+  }
+
+  .p-tabview .p-tabview-nav {
+    background-color: black;
+    li {
+      color: white;
+      font-weight: bold;
+      font-size: 1rem;
+      padding: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+
+      &.p-highlight {
+        background-color: black;
+        .p-tabview-nav-link {
+          color: $primary-color;
+        }
+      }
+
+      &:hover {
+        background-color: #333;
+      }
+    }
+
+    .p-tabview-ink-bar {
+      display: none;
+    }
+  }
+
+  .p-carousel .p-carousel-content {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .p-carousel .p-carousel-prev,
+  .p-carousel .p-carousel-next {
+    background-color: $primary-color;
+    color: white;
+    border-radius: 50%;
+    padding: 10px;
+    z-index: 10;
+  }
+
+  .p-carousel .p-carousel-indicator {
+    display: none !important;
+  }
+
+  .actor {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    max-width: 250px;
+    padding: 10px;
+    img {
+      width: 100%;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+    div {
+      text-align: center;
+      color: black;
+    }
+    .memberName {
+      text-align: center;
+      color: black;
+      font-weight: bold;
+    }
+    .name {
+      font-weight: bold;
+      margin-top: 5px;
+      font-size: 1rem;
+      color: black;
+    }
+    .character {
+      font-size: 0.9rem;
+      color: $primary-color;
+    }
+    .placeholder-image {
+      width: 149px;
+      height: auto;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 2px solid $primary-color;
+    }
+  }
+
+  .overview-container {
+    padding: 20px;
+    margin-bottom: 40px;
+  }
+
+  .overview {
+    color: rgb(0, 0, 0);
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .overview-title {
+    display: flex;
+    background-color: black;
+    text-align: center;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+  }
+
+  .stat {
+    display: flex;
+    padding: 5px;
+  }
+
+  .label {
+    width: 120px;
+    font-weight: bold;
+    color: black;
+  }
+
+  .value {
+    color: black;
+    padding-left: 10px;
+  }
+
+  a {
+    text-decoration: none;
+    color: white;
+  }
+
+  .poster {
+    width: 20%;
+    border-radius: 5%;
+  }
+
+  .overview-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .poster-container {
+    width: 30%;
+  }
+
+  .overview-info {
+    width: 65%;
+    display: block;
+    margin-top: 20px;
+  }
+
+  .overview-title {
+    text-align: left;
+  }
+
+  .poster {
+    width: 100%;
+  }
+
+  .trailer {
+    display: block;
+    margin-top: 30px;
+    text-align: left;
+    width: 60%;
+    max-width: 100%;
+    border-radius: 20px;
+  }
+
+  @media (max-width: 768px) {
+    .overview-grid {
+      display: block;
+      align-items: center;
+      text-align: center;
+    }
+
+    .poster-container {
+      width: 100%;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .overview-info {
+      margin-top: 15px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .overview-title {
+      text-align: center;
+    }
+
+    .poster {
+      width: 50%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    app-video-embed {
+      width: 80%;
+    }
+
+    .trailer {
+      width: 80%;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+  }
+
+  @media (min-width: 769px) {
+    .poster-container {
+      width: 30%;
+    }
+
+    .overview-info {
+      width: 65%;
+      display: block;
+      margin-top: 20px;
+    }
+
+    .overview-title {
+      text-align: left;
+    }
+
+    .poster {
+      width: 100%;
+    }
+
+    app-video-embed {
+      width: 60%;
+    }
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    margin: 20px 0;
+  }
+
+  .col-12, .col-6, .col-4, .col-3 {
+    width: 100%;
+  }
+
+  p-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+
+  .p-carousel .p-carousel-item img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  .actor img, .crew img {
+    max-width: 200px;
+    height: auto;
+  }
+
+  @media (max-width: 768px) {
+    p-image, app-video-embed {
+      width: 100%;
+      max-width: 100%;
+      margin: 0 auto;
+    }
+  }
+
+  @media (min-width: 769px) {
+    .grid {
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+
+    p-image, app-video-embed {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .trailer-button {
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1rem;
+    margin-top: 20px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba($primary-color, 0.6);
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    text-align: left;
+    margin-left: 0;
+    margin-right: auto;
+
+    &:hover {
+      background-color: #333;
+      box-shadow: 0 4px 12px rgba($primary-color, 0.8);
+    }
+  }
+
+  .show-more-button {
+    display: flex;
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1rem;
+    margin-top: 20px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba($primary-color, 0.6);
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    text-align: center;
+    margin: 20px auto;
+
+    &:hover {
+      background-color: #333;
+      box-shadow: 0 4px 12px rgba($primary-color, 0.8);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .trailer-button {
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+
+    .show-more-button {
+      margin: 20px auto;
+    }
+  }
+}

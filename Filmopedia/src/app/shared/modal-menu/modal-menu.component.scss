@@ -1,0 +1,83 @@
+.modal-header {
+  .logo-modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center; /* Centra el texto y el logo */
+    width: 100%; /* Asegura que el contenedor ocupe todo el ancho */
+
+    .modal-logo-img {
+      height: 8vw; /* Ajuste proporcional a la pantalla */
+      width: auto; /* Mantener la proporción de la imagen */
+      border-radius: 8px;
+    }
+
+    .modal-logo-text {
+      font-size: 4vw;  /* Ajuste proporcional al tamaño de la pantalla */
+      font-weight: bold;
+      margin-left: 2vw;  /* Márgenes proporcionales a la pantalla */
+      color: white;
+    }
+  }
+}
+
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 70vh; /* Ocupa el 70% de la pantalla para las opciones */
+
+  ul.navbar-nav {
+    display: flex;
+    flex-direction: column;
+    width: 100%; /* Asegura que los botones ocupen todo el ancho disponible */
+    justify-content: center;
+
+    .btn {
+      background-color: rgb(255, 255, 255); /* Color de fondo */
+      color: rgb(0, 0, 0); /* Color del texto */
+      font-weight: bold;
+      font-size: 5vw; /* Tamaño del texto proporcional al ancho de la pantalla */
+      text-align: center;
+      border-radius: 5px;
+      padding: 2vh; /* Aumenta el padding para hacerlo más alto */
+      width: 90%; /* Botones más anchos */
+      max-width: 1000px; /* Tamaño máximo para pantallas grandes */
+      margin-bottom: 5%; /* Espaciado entre botones */
+    }
+  }
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10px;
+
+  button { 
+    background-color: rgb(255, 70, 70); /* Color de fondo */
+    color: rgb(255, 255, 255); /* Color del texto */
+    font-size: 5vw; /* Texto proporcional al tamaño de la pantalla */
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 2vh; /* Menor altura para el botón de cerrar */
+    width: 10%; /* El botón de cerrar será más estrecho */
+    max-width: 1000px; /* Tamaño máximo para pantallas grandes */
+    margin-bottom: 10px; /* Espaciado entre botones */
+  }
+}
+
+/* Ajustes específicos para dispositivos más pequeños */
+@media (max-width: 768px) {
+  .modal-header .logo-modal {
+    .modal-logo-img {
+      height: 12vw; /* Imagen más grande en dispositivos pequeños */
+    }
+
+    .modal-logo-text {
+      font-size: 5vw; /* Texto más grande en dispositivos pequeños */
+      margin-left: 2vw; /* Ajustar margen proporcional */
+    }
+  }
+}

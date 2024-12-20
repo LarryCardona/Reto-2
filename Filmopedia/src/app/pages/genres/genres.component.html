@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="genres-container">
+    <ng-container *ngIf="genres$ | async as genres">
+      <div class="genres">
+        <a
+          *ngFor="let genre of genres"
+          [routerLink]="'/genres/' + genre.id"
+          role="button"
+          aria-hidden="true"
+          class="genre-item"
+        >
+          {{ genre.name }}
+        </a>
+      </div>
+    </ng-container>
+  </div>
+
+  <!-- Mostrar las películas -->
+  <ng-container *ngIf="shows$ | async as shows">
+    <div class="grid show-list-container">
+      <ng-container *ngFor="let show of shows.results">
+        <app-show-item
+          [showItem]="show"
+          [showType]="showType"
+          class="show-item"
+        ></app-show-item>
+      </ng-container>
+    </div>
+
+    <!-- Paginador -->
+    <div class="paginator-container">
+      <p-paginator
+        [rows]="20"
+        [first]="first"
+        (onPageChange)="handlePageChange($event)"
+        [totalRecords]="shows.total_results"
+        [pageLinkSize]="pageLinkSize"
+      ></p-paginator>
+    </div>
+  </ng-container>
+</div>

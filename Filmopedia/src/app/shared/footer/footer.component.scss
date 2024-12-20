@@ -1,0 +1,12 @@
+.footer {
+  background-color: #000000; /* Fondo negro oscuro */
+  border-top: 2px solid rgb(255, 70, 70); /* Línea superior roja */
+  color: white; /* Letras blancas */
+  font-weight: bold; /* Letras en negrita */
+  padding: 2rem 0; /* Espaciado superior e inferior */
+
+  p {
+    font-size: 1.2rem; /* Tamaño de fuente ajustado */
+    margin: 0;
+  }
+}

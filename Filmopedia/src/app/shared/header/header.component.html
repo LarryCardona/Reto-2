@@ -1,0 +1,40 @@
+<header>
+  <div class="logo">
+    <img src="../../../assets/images/logo.jpg" alt="logo" class="logo-img" />
+    <span>FilmoPedia</span>
+  </div>
+
+  <!-- Menú para pantallas grandes -->
+  <nav class="navbar navbar-expand-lg">
+    <ul class="navbar-nav d-none d-lg-flex">
+      <li class="nav-item">
+        <a class="nav-link active" routerLink="/">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="list/movie">Movies</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="list/tv">TvShows</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="genres">Genres</a>
+      </li>
+    </ul>
+
+    <!-- Botón hamburguesa para pantallas pequeñas -->
+    <button
+      class="navbar-toggler d-lg-none"
+      type="button"
+      data-bs-toggle="modal"
+      data-bs-target="#menuModal"
+    >
+      <div class="hamburger-lines">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </button>
+  </nav>
+</header>
+
+<app-modal-menu></app-modal-menu>
